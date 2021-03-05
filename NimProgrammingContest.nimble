@@ -5,6 +5,7 @@ author        = "panno"
 description   = "Utilities for Programming contest and answers log"
 license       = "MIT"
 srcDir        = "src"
+binDir        = "bin"
 installExt    = @["nim"]
 bin           = @["pc"]
 
@@ -16,7 +17,7 @@ requires "nim >= 1.4.2"
 import strformat, sugar, sequtils, strutils
 
 task debug,"":
-  exec(fmt"nim c -r -d:debug --outDir:. {srcDir}/{bin[0]}.nim")
+  exec(fmt"nim c -r -d:debug -o:{binDir}/{bin[0]} {srcDir}/{bin[0]}.nim")
 
 task submit,"":
   let f = fmt"{srcDir}/{bin[0]}.nim".readfile().split('\n')
